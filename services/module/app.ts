@@ -2,17 +2,18 @@
 import express from "express";
 import cors from "cors"; // Corrected import statement for cors
 import { AppDataSource } from "../../config/data-source";
-import userRoutes from "./routes/user.routes";
+import moduleRoutes from "./routes/module.routes";
 import * as dotenv from 'dotenv';
 import { authenticateToken } from "../../config/authmiddleware";
 const app = express();
-const PORT = 4002;
-const serviceName = 'User'
+const PORT = 4003;
+const serviceName = 'Module'
 app.use(cors());
 app.use(express.json());
 dotenv.config();
 const allowedOrigins = [
-  "http://localhost:3000"
+  "http://localhost:3000",
+  "https://packworkx.pazl.info"
 ];
 app.use(
   cors({
@@ -35,7 +36,7 @@ AppDataSource.initialize()
   })
   .catch((error) => console.log(`Error during ${serviceName} Data Source initialization:`, error));
 app.use(authenticateToken as express.RequestHandler);
-app.use(`/${process.env.FOLDER_NAME}`, userRoutes);
+app.use(`/${process.env.FOLDER_NAME}`, moduleRoutes);
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`${serviceName} Service running on port ${PORT}`);
 });

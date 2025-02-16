@@ -97,6 +97,7 @@ import { CONNREFUSED } from "dns";
  */
 export const login = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
+        console.log("Inser Login function")
         const UserSchema = Joi.object({
             userName: Joi.string().email().required().messages({
                 "string.empty": "Email is required",
@@ -141,7 +142,8 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
         }
         const token = jwt.sign(
             { id: foundUser.id},
-            process.env.JWT_SECRET as string
+            process.env.JWT_SECRET as string,
+            { expiresIn: "1h" }
         );
         res.status(200).json({
             status: true,

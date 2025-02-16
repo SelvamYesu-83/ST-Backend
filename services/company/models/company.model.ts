@@ -95,4 +95,5 @@ export class Company {
 
     @UpdateDateColumn({ type: 'timestamp', comment: 'Last update date' })
     updatedAt!: Date;
+  modules: any;
 }

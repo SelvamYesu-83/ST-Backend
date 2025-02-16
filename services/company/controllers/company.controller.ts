@@ -74,7 +74,7 @@ import Joi from "joi";
 
 /**
  * @swagger
- * /api/company/{id}:
+ * /company/{id}:
  *   get:
  *     summary: Get a company by ID
  *     tags: [Company]

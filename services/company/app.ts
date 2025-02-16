@@ -9,7 +9,7 @@ import swaggerUi from 'swagger-ui-express';
 import path from 'path';
 import swaggerJSDoc, { Options } from 'swagger-jsdoc'; // Corrected import statement for authenticateToken
 const app = express();
-const PORT = 3001;
+const PORT = 4001;
 app.use(cors());
 app.use(express.json());
 dotenv.config();
@@ -35,17 +35,17 @@ const swaggerOptions: Options = {
   swaggerDefinition: {
     openapi: '3.0.0',
     info: {
-      title: 'TVS Internal Ticketing System API',
+      title: 'Pacx Works API',
       version: '1.0.0',
-      description: 'API for managing TVS Internal Ticketing System',
+      description: 'API for managing Pacx Works',
       contact: {
-        name: 'Selvam',
-        email: 'selvam.yesu@tvs.in',
+        name: 'Ananda Karthick',
+        email: 'ananda.s@pazl.info',
       },
     },
     servers: [
       {
-        url: `${process.env.BASE_URL}:${PORT}`,
+        url: `${process.env.BASE_URL}:${PORT}` || 'https://buzz.pazl.info',
         description: 'Server',
       },
     ],
@@ -93,5 +93,5 @@ app.use('/swagger-custom.js', express.static(path.join(__dirname, '../../public/
 //   console.log(`Company Service running on port ${PORT}`);
 // });
 app.listen(PORT, '0.0.0.0',() => {
-    console.log(`Company microservice running on Address ${process.env.BASE_URL}:${PORT}`);
+    console.log(`Company microservice running on port ${PORT}`);
 });

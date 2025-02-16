@@ -2,17 +2,18 @@
 import express from "express";
 import cors from "cors"; // Corrected import statement for cors
 import { AppDataSource } from "../../config/data-source";
-import userRoutes from "./routes/user.routes";
+import userRoutes from "./routes/rbac.routes";
 import * as dotenv from 'dotenv';
 import { authenticateToken } from "../../config/authmiddleware";
 const app = express();
-const PORT = 4002;
-const serviceName = 'User'
+const PORT = 4004;
+const serviceName = 'role-based-access-control'
 app.use(cors());
 app.use(express.json());
 dotenv.config();
 const allowedOrigins = [
-  "http://localhost:3000"
+  "http://localhost:3000",
+  "https://packworkx.pazl.info"
 ];
 app.use(
   cors({

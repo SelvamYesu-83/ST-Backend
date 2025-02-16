@@ -38,7 +38,7 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
     ];
 
     // If the requested path is not protected, skip token validation
-    if (!protectedPaths.includes(req.path) && !req.path.startsWith(`/${process.env.FOLDER_NAME}/docs`) && !req.path.includes("api/company")) {
+    if (!protectedPaths.includes(req.path) && !req.path.startsWith(`/${process.env.FOLDER_NAME}/docs`)) {
         const token = req.header('Authorization')?.split(' ')[1]; // Get the token from header
         
         if (!token) {
