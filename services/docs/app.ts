@@ -43,8 +43,8 @@ const swaggerOptions: Options = {
     },
     servers: [
       {
-        url: 'http://192.168.86.228',
-        description: 'Server',
+        url: 'http://10.237.102.78',
+        description: 'Server_1',
       },
     ],
     components: {
